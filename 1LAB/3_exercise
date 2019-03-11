@@ -1,0 +1,20 @@
+#! /bin/bash
+
+if [ $# -ne 2 ]; then
+	echo ERROR: Invalid number of provided arguments
+	exit 0
+fi
+
+if [ -d $1 ] && [ -d $2 ]; then
+
+	for file in ${1}/*; do
+		if [ -r $file ]; then
+			echo Moved file $file from $1 to $2
+			#mv $file $2
+		fi
+	done
+
+else
+	echo ERROR: Both arguments should be directories!
+	exit 0
+fi

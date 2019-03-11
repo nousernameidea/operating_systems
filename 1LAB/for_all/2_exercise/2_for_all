@@ -1,0 +1,17 @@
+#! /bin/bash
+
+if [ $# != 2 ]; then
+	echo ERROR: Invalid number of argumens provided
+	exit 0
+fi
+
+if [ $1 -gt $2 ]; then
+	echo ERROR: 1st argument greater than 2nd
+	exit 0
+fi
+
+for i in `seq $1 $2`; do
+	touch plik$i
+done
+
+echo Created files `ls plik*`
