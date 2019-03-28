@@ -1,0 +1,12 @@
+#! /bin/bash
+
+if [ $# -eq 1 ] && [ -d $1 ]; then
+	for file in ${1}/*; do
+		if [ -L $file ] && [ -f $(readlink -f $file) ] && [ $(dirname $(readlink -f $file)) != $(readlink -f $1) ]
+		then
+			ln -f $(readlink -f $file) $1/$(basename $file)
+		fi
+	done
+else
+	echo Niepoprawny argument!
+fi
